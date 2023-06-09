@@ -48,4 +48,15 @@ public class GESTOR {
             view.mostrarLibros(libros);
         }
     }
+
+    /**
+     * Esta funcion verifica el tipo de usuario para rediccionar al menu respectivo
+     */
+
+    public void VertificacionLogin() {
+
+
+    }
+
+
 }
