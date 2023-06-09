@@ -1,5 +1,3 @@
-package Logic;
-
 import Model.Administrador.AdministradorDAO;
 import Model.Cliente.ClienteDAO;
 import Model.Libro.LibroDAO;
