@@ -1,7 +1,7 @@
-package Controller;
+package Backend.Controller;
 
-import Model.Libro.Libro;
-import View.VRegistroLibro;
+import Backend.Model.Libro.Libro;
+import Frontend.VRegistroLibro;
 
 import java.util.ArrayList;
 import java.util.List;

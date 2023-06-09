@@ -1,6 +1,6 @@
-package View;
+package Frontend;
 
-import Model.Libro.Libro;
+import Backend.Model.Libro.Libro;
 
 import java.util.List;
 

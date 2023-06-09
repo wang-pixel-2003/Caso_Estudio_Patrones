@@ -1,4 +1,4 @@
-package Model.Libro;
+package Backend.Model.Libro;
 
 public class Libro {
     private String titulo;
