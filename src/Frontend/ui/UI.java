@@ -13,14 +13,9 @@ public class UI {
         System.out.println("================ CASO DE ESTUDIO ========================");
         System.out.println("          G R U P O   2: M A R I O   64                  ");
         System.out.println("==========================================================");
-        System.out.println("============  Bienvenido- Biblioteca El Caso =============");
-        System.out.println("1. Ingresar como Administrador:");
-        System.out.println("2. Ingresar como Cliente");
-        System.out.println("0. Salir");
-        System.out.print("Seleccione la opción que desea: ");
-
-
+        System.out.println("============ Bienvenido - Biblioteca El Caso =============");
     }
+
 
     public void mostrarMenuAdmin() {
         System.out.println("============= Biblioteca El Caso =====================");
