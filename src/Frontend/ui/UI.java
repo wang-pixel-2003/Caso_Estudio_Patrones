@@ -10,7 +10,6 @@ public class UI {
 
 
     public void mostrarMenu() {
-        System.out.println("=========================================================");
         System.out.println("================ CASO DE ESTUDIO ========================");
         System.out.println("          G R U P O   2: M A R I O   64                  ");
         System.out.println("==========================================================");
