@@ -33,4 +33,17 @@ public class Libro {
         this.autor = autor;
         this.categoria = categoria;
     }
+
+    /***
+     * Sobre escribe la informacion y retorna el libro
+     * @return
+     */
+    @Override
+    public String toString() {
+        return "Libro{" +
+                "titulo='" + titulo + '\'' +
+                ", autor='" + autor + '\'' +
+                ", categoria='" + categoria + '\'' +
+                '}';
+    }
 }
