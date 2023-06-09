@@ -4,32 +4,40 @@ import Frontend.ui.UI;
 public class Controller {
     private UI interfaz = new UI();
     public void start() throws Exception {
-        int opcion = -1;
-        do {
-            interfaz.mostrarMenu();
-            opcion = interfaz.leerOpcion();
-            procesarOpcion(opcion);
-        }
-        while (opcion != -0);
+        interfaz.mostrarMenu();
+        loginUsuario();
+
     }
-    public void procesarOpcion(int opcion) throws Exception {
-        switch (opcion) {
-            case 1:
+    public void loginUsuario() throws Exception{
+        String usuarioTemp = "HolaMundo";
+        String contrasenaTemp = "1234";
+        int opcion =-1;
+
+        interfaz.imprimirMensaje("Digite el usuario:");
+        String usuario = interfaz.leerTexto();
+        interfaz.imprimirMensaje("Digite contrasena:");
+        String password = interfaz.leerTexto();
+
+        if (usuario.equals(usuarioTemp) && password.equals(contrasenaTemp)){
+            do{
                 interfaz.mostrarMenuAdmin();
                 opcion = interfaz.leerOpcion();
                 procesarOpcionAdmin(opcion);
-                break;
-            case 2:
+            }
+            while (opcion != -0);
+
+        } else {
+            do{
                 interfaz.mostrarMenuCliente();
                 opcion = interfaz.leerOpcion();
                 procesarOpcionCliente(opcion);
-                break;
-            case 0:
-                break;
-            default:
-                interfaz.imprimirMensaje("Opcion desconocida");
+            }
+            while (opcion != -0);
         }
+        interfaz.imprimirMensaje("****** Gracias por visitarnos ****");
     }
+
+
     public void procesarOpcionAdmin(int opcion) throws Exception {
         switch (opcion) {
             case 1:
