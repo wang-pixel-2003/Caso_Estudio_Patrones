@@ -1,7 +1,7 @@
-package Model.Administrador;
+package Backend.Model.Administrador;
 
 
-import Model.Persona.Persona;
+import Backend.Model.Persona.Persona;
 
 public class Administrador  extends Persona {
 

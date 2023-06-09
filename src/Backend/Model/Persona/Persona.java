@@ -1,4 +1,4 @@
-package Model.Persona;
+package Backend.Model.Persona;
 
 public class Persona {
     private String nombre;

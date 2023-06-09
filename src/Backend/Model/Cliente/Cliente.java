@@ -1,6 +1,6 @@
-package Model.Cliente;
+package Backend.Model.Cliente;
 
-import Model.Persona.Persona;
+import Backend.Model.Persona.Persona;
 
 public class Cliente extends Persona {
     public Cliente(String nombre, String direccion, String telefono, String contrasenna, String usuario) {
