@@ -38,7 +38,7 @@ public class Controller {
         interfaz.imprimirMensaje("Digite el numero de estado a escoger");
         interfaz.imprimirMensaje("Estado 0 = Disponible");
         interfaz.imprimirMensaje("Estado 1 = Ocupado");
-        int estado = interfaz.leerNumero();
+        int estado = Integer.parseInt(interfaz.leerTexto());
         gestor.modificarEstado(estado, titulo);
         if(estado==0){
             interfaz.imprimirMensaje("Ahora el estado del libro " + titulo + " esta Disponible\n");
