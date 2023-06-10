@@ -12,8 +12,41 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Esta funcion lo que hace es insertar en la tabla libros, el libro con sus titulo, autor, categoria.
+ */
 public class LibroDAO {
+    public void registrarLibro(String titulo, String autor, String categoria){
+        ConexionBD con = new ConexionBD();
+        String sql = "";
+        sql = "INSERT INTO Libros (id_libro, titulo, autor, categoria, estado) VALUES (nextval('SEC_TIPO_LIBROS'),?,?,?,?)";
 
+        PreparedStatement ps = null;
+        try {
+            ps = con.getConnection().prepareStatement(sql);
+            ps.setString(1,titulo);
+            ps.setString(2,autor);
+            ps.setString(3,categoria);
+            ps.setInt(4, 0);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(LibroDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(LibroDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                ps.close();
+                con.desconectarBD();
+            } catch (Exception ex) {
+                con.desconectarBD();
+            }
+        }
+    }
+
+    /**
+     * Esta funcion lo que hace es llamar la informacion de la tabla libros.
+     * @return
+     */
     public ArrayList<Libro> mostrarListaLibros() {
         ArrayList<Libro> list = new ArrayList<Libro>();
         ConexionBD con = new ConexionBD();

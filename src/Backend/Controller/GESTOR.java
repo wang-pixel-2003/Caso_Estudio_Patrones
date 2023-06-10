@@ -26,15 +26,13 @@ public class GESTOR {
     }
 
     /**
-     * Esta funcion crea libros y lo agrega a una lista donde despues informa que esta correctamente agregado.
+     * Esta funcion registra el libro y lo envia a la base de datos
      * @param titulo
      * @param autor
      * @param categoria
      */
-    public void agregarLibro(int idLibro,int estado, String titulo, String autor, String categoria){
-        Libro libro = new Libro(idLibro,estado,titulo, autor, categoria);
-        libros.add(libro);
-        view.mostrarMensaje("Nombre de Libro agregado: " + libro.getTitulo());
+    public void agregarLibro(String titulo, String autor, String categoria){
+        librosDao.registrarLibro(titulo, autor, categoria);
     }
 
     /**
