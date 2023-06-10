@@ -17,12 +17,14 @@ public class GESTOR {
     private final PersonaDAO personaDao;
     private final LibroDAO librosDao;
     private Persona UsuarioLogin;
+    private final PrestamoDAO prestamoDAO;
 
     public GESTOR() {
         //administradorDao = new AdministradorDAO();
        // clienteDao =  new ClienteDAO();
         personaDao = new PersonaDAO();
         librosDao = new LibroDAO();
+        prestamoDAO = new PrestamoDAO();
     }
 
     /**
@@ -70,7 +72,9 @@ public class GESTOR {
          */
     }
 
-
+    public ArrayList<Prestamo> mostrarLibrosPrestados() {
+        return prestamoDAO.mostrarListaLibrosPrestados();
+    }
 
     /**
      * Funcion que recibe el objeto de persona para mandarlo a la base de datos.

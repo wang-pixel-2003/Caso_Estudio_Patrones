@@ -16,11 +16,23 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class PrestamoDAO {
-    public ArrayList<Prestamo> mostrarListaLibrosEstado() {
-        ArrayList<Prestamo> list = new ArrayList<Prestamo>();
+
+    public ArrayList<Prestamo> mostrarListaLibrosPrestados() {
+        ArrayList<Prestamo> lista = new ArrayList<Prestamo>();
         ConexionBD con = new ConexionBD();
         String sql = "";
-        sql = "SELECT pr.id_libro, pr.id_usuario, pr.fecha_devolucion FROM PRESTAMOS_LIBRO pr";
+        sql = "SELECT \n" +
+                "PL.ID_PRESTAMO,\n" +
+                "CASE WHEN US.NOMBRE_COMPLETO IS NULL THEN 'SIN ASIGNAR' ELSE  US.NOMBRE_COMPLETO  END AS NOMBRE_COMPLETO,\n" +
+                "LB.TITULO,\n" +
+                "CASE WHEN TO_CHAR(PL.FECHA_DEVOLUCION,'DD/MM/YYYY') IS NULL THEN 'SIN ASIGNAR' ELSE TO_CHAR(PL.FECHA_DEVOLUCION,'DD/MM/YYYY') END AS FECHA_DEVOLUCION, \n" +
+                "LB.TITULO\n" +
+                "FROM LIBROS LB LEFT JOIN PRESTAMOS_LIBROS PL \n" +
+                "ON LB.ID_LIBRO= PL.ID_LIBRO\n" +
+                "LEFT JOIN USUARIOS US \n" +
+                "ON US.ID_USUARIO=PL.ID_USUARIO\n" +
+                "WHERE LB.ESTADO=1\n" +
+                "ORDER BY FECHA_DEVOLUCION DESC\n";
 
         ResultSet rs = null;
         PreparedStatement ps = null;
@@ -35,10 +47,12 @@ public class PrestamoDAO {
 
 
                 pr.setId_Prestamo(rs.getInt(1));
-                pr.setId_Libro(rs.getInt(2));
-                pr.setId_Usuario(rs.getInt(3));
+                Persona persona = new Persona(rs.getString(2));
+                Libro libro = new Libro(rs.getString(3));
+                pr.setNombreUsuario(persona);
+                pr.setLibro(libro);
                 pr.setFecha_Devolucion(rs.getString(4));
-                list.add(pr);
+                lista.add(pr);
 
             }
         } catch (SQLException ex) {
@@ -56,7 +70,7 @@ public class PrestamoDAO {
         }
 
         con.desconectarBD();
-        return list;
+        return lista;
     }
 
 

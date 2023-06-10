@@ -82,6 +82,11 @@ public class Persona {
         this.usuario = usuario;
         this.tipoUsuario = tipoUsuario;
     }
+
+    public Persona(String nombre){
+        this.nombre = nombre;
+    }
+
     public Persona() {
 
     }

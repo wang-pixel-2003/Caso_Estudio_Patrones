@@ -39,6 +39,7 @@ public class UI {
         System.out.println("2. Solicitar libro");
         System.out.println("3. Devolver libro prestado");
         System.out.println("4. Mostrar libros disponibles");
+        System.out.println("5. Mostrar libros prestados");
         System.out.println("0. Salir");
         System.out.print("Seleccione la opción que desea: ");
     }
