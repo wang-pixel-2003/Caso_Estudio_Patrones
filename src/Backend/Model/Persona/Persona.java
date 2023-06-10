@@ -1,11 +1,13 @@
 package Backend.Model.Persona;
 
 public class Persona {
+    private int id;
     private String nombre;
     private String direccion;
     private String telefono;
     private String contrasenna;
     private String usuario;
+    private String tipoUsuario;
 
     public String getNombre() {
         return nombre;
@@ -47,11 +49,31 @@ public class Persona {
         this.usuario = usuario;
     }
 
-    public Persona(String nombre, String direccion, String telefono, String contrasenna, String usuario) {
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Persona(int id, String nombre, String direccion, String telefono, String contrasenna, String usuario, String tipoUsuario) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
         this.contrasenna = contrasenna;
         this.usuario = usuario;
+        this.tipoUsuario = tipoUsuario;
+    }
+    public Persona() {
+
     }
 }

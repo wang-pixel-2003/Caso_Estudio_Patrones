@@ -1,7 +1,11 @@
 package Frontend.tl;
+import Backend.Controller.GESTOR;
+import Backend.Model.Persona.Persona;
 import Frontend.ui.UI;
 
 public class Controller {
+    GESTOR gestor = new GESTOR();
+
     private UI interfaz = new UI();
     public void start() throws Exception {
         interfaz.mostrarMenu();
@@ -9,8 +13,7 @@ public class Controller {
 
     }
     public void loginUsuario() throws Exception{
-        String usuarioTemp = "HolaMundo";
-        String contrasenaTemp = "1234";
+
         int opcion =-1;
 
         interfaz.imprimirMensaje("Digite el usuario:");
@@ -18,7 +21,8 @@ public class Controller {
         interfaz.imprimirMensaje("Digite contrasena:");
         String password = interfaz.leerTexto();
 
-        if (usuario.equals(usuarioTemp) && password.equals(contrasenaTemp)){
+        Persona resultado = gestor.VerificacionLogin(usuario,password);
+        if (resultado.getTipoUsuario().equals("ADMINISTRADOR")){
             do{
                 interfaz.mostrarMenuAdmin();
                 opcion = interfaz.leerOpcion();
@@ -26,13 +30,15 @@ public class Controller {
             }
             while (opcion != -0);
 
-        } else {
+        } else if (resultado.getTipoUsuario().equals("CLIENTES")){
             do{
                 interfaz.mostrarMenuCliente();
                 opcion = interfaz.leerOpcion();
                 procesarOpcionCliente(opcion);
             }
             while (opcion != -0);
+        } else {
+            interfaz.imprimirMensaje("El usuario o password no existe");
         }
         interfaz.imprimirMensaje("****** Gracias por visitarnos ****");
     }
