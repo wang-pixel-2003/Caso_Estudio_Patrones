@@ -1,7 +1,6 @@
 package Backend.Controller;
 
 import Backend.Model.Libro.Libro;
-import Frontend.VRegistroLibro;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +24,8 @@ public class CRegistroLibro {
      * @param autor
      * @param categoria
      */
-    public void agregarLibro(String titulo, String autor, String categoria){
-        Libro libro = new Libro(titulo, autor, categoria);
+    public void agregarLibro(int idLibro, int estado,String titulo, String autor, String categoria){
+        Libro libro = new Libro(idLibro,estado,titulo, autor, categoria);
         libros.add(libro);
         view.mostrarMensaje("Nombre de Libro agregado: " + libro.getTitulo());
     }

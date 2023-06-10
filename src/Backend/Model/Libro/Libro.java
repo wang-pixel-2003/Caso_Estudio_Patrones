@@ -1,6 +1,9 @@
 package Backend.Model.Libro;
 
 public class Libro {
+
+    private int idLibro;
+    private int estado;
     private String titulo;
     private String autor;
     private String categoria;
@@ -28,7 +31,30 @@ public class Libro {
         this.categoria = categoria;
     }
 
-    public Libro(String titulo, String autor, String categoria) {
+    public int getIdLibro() {
+        return idLibro;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
+    public Libro(){
+
+
+    }
+
+    public void setIdLibro(int idLibro) {
+        this.idLibro = idLibro;
+    }
+
+    public Libro(int idLibro, int estado,String titulo, String autor, String categoria) {
+        this.idLibro=idLibro;
+        this.estado=estado;
         this.titulo = titulo;
         this.autor = autor;
         this.categoria = categoria;
@@ -38,10 +64,13 @@ public class Libro {
      * Sobre escribe la informacion y retorna el libro
      * @return
      */
+
     @Override
     public String toString() {
         return "Libro{" +
-                "titulo='" + titulo + '\'' +
+                "idLibro=" + idLibro +
+                ", estado=" + estado +
+                ", titulo='" + titulo + '\'' +
                 ", autor='" + autor + '\'' +
                 ", categoria='" + categoria + '\'' +
                 '}';
