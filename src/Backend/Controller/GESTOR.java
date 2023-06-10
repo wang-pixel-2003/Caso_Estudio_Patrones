@@ -61,9 +61,21 @@ public class GESTOR {
         UsuarioLogin = usuarioLogin;
     }
 
-
+    /**
+     * Funcion que contiene la lista de libros que pertenecen despues de la consulta al DAO de libros
+     * @return
+     */
     public  ArrayList<Libro>listarTotalLibros(){
         return librosDao.mostrarListaLibros();
 
+    }
+
+    /**
+     * Funcion que contiene la lista de libros que pertenecen al usuario despues de la consulta al DAO de libros
+     * @param usuario
+     * @return
+     */
+    public ArrayList<Libro> listarLibrosxUsuario(String usuario){
+        return librosDao.librosUsuario(usuario);
     }
 }

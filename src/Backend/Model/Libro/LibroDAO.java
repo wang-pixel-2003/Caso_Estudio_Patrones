@@ -90,4 +90,55 @@ public class LibroDAO {
         return list;
     }
 
+    /**
+     * Funcion que realiza una busqueda en la bd para retirar los libros que han sido prestaods por un usuario
+     * @param usuario
+     * @return
+     */
+    public ArrayList<Libro> librosUsuario(String usuario) {
+        ArrayList<Libro> list = new ArrayList<Libro>();
+        ConexionBD con = new ConexionBD();
+        String sql;
+        sql = "SELECT Lib.id_libro, Lib.titulo, Lib.autor, Lib.categoria, Lib.estado\n" +
+                "FROM prestamos_libros AS PL\n" +
+                "INNER JOIN usuarios AS U ON PL.id_usuario = U.id_usuario \n" +
+                "INNER JOIN libros AS Lib ON Lib.id_libro = PL.id_libro\n" +
+                "WHERE U.username = '"+ usuario +"'";
+
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+//        System.out.println(sql);
+        try {
+
+            ps = con.getConnection().prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Libro lb= new Libro();
+
+                lb.setIdLibro(rs.getInt(1));
+                lb.setTitulo(rs.getString(2));
+                lb.setAutor(rs.getString(3));
+                lb.setCategoria(rs.getString(4));
+                lb.setEstado(rs.getInt(5));
+                list.add(lb);
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LibroDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(LibroDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                ps.close();
+                rs.close();
+                con.desconectarBD();
+            } catch (Exception ex) {
+                con.desconectarBD();
+            }
+        }
+
+        con.desconectarBD();
+        return list;
+    }
 }
