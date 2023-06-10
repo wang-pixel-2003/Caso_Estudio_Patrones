@@ -66,6 +66,15 @@ public class Persona {
     }
 
     public Persona(int id, String nombre, String direccion, String telefono, String contrasenna, String usuario, String tipoUsuario) {
+        this.id = id;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.contrasenna = contrasenna;
+        this.usuario = usuario;
+        this.tipoUsuario = tipoUsuario;
+    }
+    public Persona( String nombre, String direccion, String telefono, String contrasenna, String usuario, String tipoUsuario) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;

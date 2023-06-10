@@ -13,7 +13,7 @@ public class Controller {
     private UI interfaz = new UI();
     public void start() throws Exception {
         interfaz.mostrarMenu();
-        loginUsuario();
+        primerMenuOpcion();
     }
 
     /**
@@ -32,6 +32,49 @@ public class Controller {
 
     }
 
+    /**
+     * Funcion que permite elegir la opcion del primer menu
+     * @throws Exception
+     */
+    public void primerMenuOpcion() throws Exception {
+        int opcion = interfaz.leerOpcion();
+        if(opcion == 1) {
+            registroUsuario();
+        } else if (opcion == 2) {
+            loginUsuario();
+        } else {
+            interfaz.imprimirMensaje("****** La opcion ingresada no es valida ****");
+            interfaz.imprimirMensaje("****** Gracias por visitarnos ****");
+        }
+    }
+    /**
+     * Funcion que lee la informacion del nuevo usuario para registrarloy.
+     * @throws Exception
+     */
+    public void registroUsuario() throws Exception {
+        interfaz.imprimirMensaje("Digite su Nombre");
+        String nombre = interfaz.leerTexto();
+
+        interfaz.imprimirMensaje("Digite su Direccion");
+        String direccion = interfaz.leerTexto();
+
+        interfaz.imprimirMensaje("Digite su Telefono");
+        String telefono = interfaz.leerTexto();
+
+        interfaz.imprimirMensaje("Digite su Nombre de Usuario");
+        String nombreUsuario = interfaz.leerTexto();
+
+        interfaz.imprimirMensaje("Digite su Contraseña");
+        String contrasenna = interfaz.leerTexto();
+
+        Persona usuario = new Persona( nombre, direccion, telefono, contrasenna, nombreUsuario,"2");
+        gestor.registroUsuario(usuario);
+
+        interfaz.imprimirMensaje("Se registro el usuario exitosamente!\n");
+        interfaz.mostrarMenu();
+        primerMenuOpcion();
+
+    }
     /**
      * Esta funcion es para el logeo de la aplicacion.
      * @throws Exception

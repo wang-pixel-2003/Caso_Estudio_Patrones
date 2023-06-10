@@ -14,8 +14,9 @@ public class UI {
         System.out.println("          G R U P O   2: M A R I O   64                  ");
         System.out.println("==========================================================");
         System.out.println("============ Bienvenido - Biblioteca El Caso =============");
+        System.out.println("1. Registrarse");
+        System.out.println("2. Iniciar Sesion");
     }
-
 
     public void mostrarMenuAdmin() {
         System.out.println("============= Biblioteca El Caso =====================");
