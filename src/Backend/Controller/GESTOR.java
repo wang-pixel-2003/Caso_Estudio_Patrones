@@ -4,6 +4,9 @@ import Backend.Model.Libro.Libro;
 import Backend.Model.Libro.LibroDAO;
 import Backend.Model.Persona.Persona;
 import Backend.Model.Persona.PersonaDAO;
+import Backend.Model.Prestamo.Prestamo;
+import Backend.Model.Prestamo.PrestamoDAO;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +55,23 @@ public class GESTOR {
 
     }
 
+
+    /**
+     * Esta funcion devuelvo lista de libros disponibles
+     * */
+
+    public ArrayList<Libro> mostrarLibrosDisponibles() {
+        return librosDao.mostrarListaLibrosDisponibles();
+        /**if (librosDao.isEmpty()) {
+            System.out.println("No hay libros disponibles.");
+        } else {
+            view.mostrarLibros(libros);
+        }
+         */
+    }
+
+
+
     /**
      * Funcion que recibe el objeto de persona para mandarlo a la base de datos.
      * @param persona
@@ -74,4 +94,5 @@ public class GESTOR {
         return librosDao.mostrarListaLibros();
 
     }
+
 }
