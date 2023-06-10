@@ -90,4 +90,40 @@ public class LibroDAO {
         return list;
     }
 
+    /**
+     * Esta funcion actualiza la informacion de libro en la tabla de libros, agarra el estado, titulo.
+     * @param estado
+     * @param titulo
+     */
+    public void modificarEstado(int estado, String titulo){
+        ConexionBD con = new ConexionBD();
+        String sql = "";
+        sql = "UPDATE Libros Set estado=? WHERE titulo=?";
+
+        PreparedStatement ps = null;
+        try {
+            ps = con.getConnection().prepareStatement(sql);
+            if (estado == 0){
+                ps.setInt(1, 0);
+                ps.setString(2,titulo);
+                ps.executeUpdate();
+            }
+            if (estado == 1){
+                ps.setInt(1, 1);
+                ps.setString(2,titulo);
+                ps.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LibroDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(LibroDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                ps.close();
+                con.desconectarBD();
+            } catch (Exception ex) {
+                con.desconectarBD();
+            }
+        }
+    }
 }

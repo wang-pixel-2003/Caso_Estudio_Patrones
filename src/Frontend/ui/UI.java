@@ -55,4 +55,8 @@ public class UI {
     public String leerTexto() throws IOException{
         return in.readLine();
     }
+
+    public int leerNumero() throws IOException{
+        return in.read();
+    }
 }

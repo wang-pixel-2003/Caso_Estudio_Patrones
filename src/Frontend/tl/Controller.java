@@ -32,6 +32,22 @@ public class Controller {
 
     }
 
+    public void modificarEstado() throws IOException {
+        interfaz.imprimirMensaje("Digite el titulo del libro");
+        String titulo = interfaz.leerTexto();
+        interfaz.imprimirMensaje("Digite el numero de estado a escoger");
+        interfaz.imprimirMensaje("Estado 0 = Disponible");
+        interfaz.imprimirMensaje("Estado 1 = Ocupado");
+        int estado = interfaz.leerNumero();
+        gestor.modificarEstado(estado, titulo);
+        if(estado==0){
+            interfaz.imprimirMensaje("Ahora el estado del libro " + titulo + " esta Disponible\n");
+        }
+        if(estado==1){
+            interfaz.imprimirMensaje("Ahora el estado del libro " + titulo + " esta Ocupado\n");
+        }
+    }
+
     /**
      * Funcion que permite elegir la opcion del primer menu
      * @throws Exception
@@ -121,7 +137,7 @@ public class Controller {
                 registroLibro();
                 break;
             case 2:
-                interfaz.imprimirMensaje("Aqui va el modificar libro");
+                modificarEstado();
                 break;
             case 3:
                 interfaz.imprimirMensaje("==lista de libros==");
