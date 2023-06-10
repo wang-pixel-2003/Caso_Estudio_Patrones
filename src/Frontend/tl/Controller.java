@@ -1,7 +1,10 @@
 package Frontend.tl;
 import Backend.Controller.GESTOR;
+import Backend.Model.Libro.Libro;
 import Backend.Model.Persona.Persona;
 import Frontend.ui.UI;
+
+import java.util.ArrayList;
 
 public class Controller {
     GESTOR gestor = new GESTOR();
@@ -53,7 +56,11 @@ public class Controller {
                 interfaz.imprimirMensaje("Aqui va el modificar libro");
                 break;
             case 3:
-                interfaz.imprimirMensaje("Mostrar lista de libros");
+                interfaz.imprimirMensaje("==lista de libros==");
+                for (Libro libro:gestor.listarTotalLibros()) {
+                    interfaz.imprimirMensaje(libro.toString());
+                }
+
                 break;
             case 4:
                 interfaz.imprimirMensaje("Mostar lista de libros prestados");

@@ -10,14 +10,14 @@ public class TestConexion {
 
     public static void main(String[] args) {
         String idCliente = "8";
-        String obtieneNombreCliente = consultaClienteTest("8");
+        String obtieneNombreCliente = consultaClienteTest("19");
         System.out.println("nombre del cliente: " + obtieneNombreCliente);
 
     }
 
     public static String consultaClienteTest(String idCliente) {
         ConexionBD con = new ConexionBD();
-        String sql = "SELECT NOMBRE_COMPLETO FROM CLIENTES CL WHERE CL.ID_CLIENTE=" + idCliente + "";
+        String sql = "SELECT NOMBRE_COMPLETO FROM USUARIOS CL WHERE CL.ID_USUARIO=" + idCliente + "";
         String nombre = "";
         try {
             Statement st = con.getConnection().createStatement();

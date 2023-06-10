@@ -1,19 +1,16 @@
 package Backend.Controller;
 
-import Backend.Model.Administrador.AdministradorDAO;
-import Backend.Model.Cliente.ClienteDAO;
 import Backend.Model.Libro.Libro;
 import Backend.Model.Libro.LibroDAO;
 import Backend.Model.Persona.Persona;
 import Backend.Model.Persona.PersonaDAO;
-import Frontend.VRegistroLibro;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GESTOR {
-    private final AdministradorDAO administradorDao;
-    private final ClienteDAO clienteDao;
+   // private final AdministradorDAO administradorDao;
+   // private final ClienteDAO clienteDao;
     private final PersonaDAO personaDao;
     private final LibroDAO librosDao;
     private List<Libro> libros;
@@ -21,8 +18,8 @@ public class GESTOR {
     private Persona UsuarioLogin;
 
     public GESTOR() {
-        administradorDao = new AdministradorDAO();
-        clienteDao =  new ClienteDAO();
+        //administradorDao = new AdministradorDAO();
+       // clienteDao =  new ClienteDAO();
         personaDao = new PersonaDAO();
         librosDao = new LibroDAO();
         libros = new ArrayList<>();
@@ -34,8 +31,8 @@ public class GESTOR {
      * @param autor
      * @param categoria
      */
-    public void agregarLibro(String titulo, String autor, String categoria){
-        Libro libro = new Libro(titulo, autor, categoria);
+    public void agregarLibro(int idLibro,int estado, String titulo, String autor, String categoria){
+        Libro libro = new Libro(idLibro,estado,titulo, autor, categoria);
         libros.add(libro);
         view.mostrarMensaje("Nombre de Libro agregado: " + libro.getTitulo());
     }
@@ -70,4 +67,9 @@ public class GESTOR {
         UsuarioLogin = usuarioLogin;
     }
 
+
+    public  ArrayList<Libro>listarTotalLibros(){
+        return librosDao.mostrarListaLibros();
+
+    }
 }
