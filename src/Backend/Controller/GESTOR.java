@@ -4,6 +4,7 @@ import Backend.Model.Administrador.AdministradorDAO;
 import Backend.Model.Cliente.ClienteDAO;
 import Backend.Model.Libro.Libro;
 import Backend.Model.Libro.LibroDAO;
+import Backend.Model.Persona.Persona;
 import Backend.Model.Persona.PersonaDAO;
 import Frontend.VRegistroLibro;
 
@@ -17,6 +18,7 @@ public class GESTOR {
     private final LibroDAO librosDao;
     private List<Libro> libros;
     private VRegistroLibro view;
+    private Persona UsuarioLogin;
 
     public GESTOR() {
         administradorDao = new AdministradorDAO();
@@ -53,10 +55,19 @@ public class GESTOR {
      * Esta funcion verifica el tipo de usuario para rediccionar al menu respectivo
      */
 
-    public void VertificacionLogin() {
-
+    public Persona VerificacionLogin(String usuario, String contrasenna) {
+        this.UsuarioLogin = personaDao.consultarPersona(usuario,contrasenna);
+        return personaDao.consultarPersona(usuario,contrasenna);
 
     }
 
+    /*Esta seccion es para llevar el objeto a las diferentes partes del programa */
+    public Persona getUsuarioLogin() {
+        return UsuarioLogin;
+    }
+
+    public void setUsuarioLogin(Persona usuarioLogin) {
+        UsuarioLogin = usuarioLogin;
+    }
 
 }
