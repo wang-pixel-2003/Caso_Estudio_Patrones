@@ -13,7 +13,6 @@ public class GESTOR {
    // private final ClienteDAO clienteDao;
     private final PersonaDAO personaDao;
     private final LibroDAO librosDao;
-    private List<Libro> libros;
     private Persona UsuarioLogin;
 
     public GESTOR() {
@@ -21,7 +20,6 @@ public class GESTOR {
        // clienteDao =  new ClienteDAO();
         personaDao = new PersonaDAO();
         librosDao = new LibroDAO();
-        libros = new ArrayList<>();
     }
 
     /**
@@ -36,13 +34,20 @@ public class GESTOR {
 
     /**
      * Esta funcion verifica el tipo de usuario para rediccionar al menu respectivo
+     * @param usuario
+     * @param contrasenna
+     * @return
      */
-
     public Persona VerificacionLogin(String usuario, String contrasenna) {
         this.UsuarioLogin = personaDao.consultarPersona(usuario,contrasenna);
         return personaDao.consultarPersona(usuario,contrasenna);
 
     }
+
+    /**
+     * Funcion que recibe el objeto de persona para mandarlo a la base de datos
+     * @param persona
+     */
     public void registroUsuario(Persona persona) {
         personaDao.registroPersona(persona);
     }
