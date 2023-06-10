@@ -149,7 +149,10 @@ public class Controller {
                 interfaz.imprimirMensaje("Mostar lista de libros prestados");
                 break;
             case 5:
-                interfaz.imprimirMensaje("Mostar lista de libros disponibles");
+                interfaz.imprimirMensaje("==lista de libros disponibles==");
+                for (Libro libro:gestor.mostrarLibrosDisponibles()) {
+                    interfaz.imprimirMensaje(libro.toString());
+                }
                 break;
             case 6:
                 interfaz.imprimirMensaje("Buscar libro por usuario");
@@ -172,7 +175,10 @@ public class Controller {
                 interfaz.imprimirMensaje("devolver libro");
                 break;
             case 4:
-                interfaz.imprimirMensaje("mostrar libros disponibles");
+                interfaz.imprimirMensaje("==lista de libros disponibles==");
+                for (Libro libro:gestor.mostrarLibrosDisponibles()) {
+                    interfaz.imprimirMensaje(libro.toString());
+                }
                 break;
             case 0:
                 break;
