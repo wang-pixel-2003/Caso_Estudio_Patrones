@@ -23,7 +23,7 @@ public class GESTOR {
     }
 
     /**
-     * Esta funcion registra el libro y lo envia a la base de datos
+     * Esta funcion registra el libro y lo envia a la base de datos.
      * @param titulo
      * @param autor
      * @param categoria
@@ -33,7 +33,15 @@ public class GESTOR {
     }
 
     /**
-     * Esta funcion verifica el tipo de usuario para rediccionar al menu respectivo
+     * Esta funcion modifica el estado y envia la informacion a actualizar.
+     * @param estado
+     * @param titulo
+     */
+    public void modificarEstado(int estado, String titulo){
+        librosDao.modificarEstado(estado, titulo);
+    }
+    /**
+     * Esta funcion verifica el tipo de usuario para rediccionar al menu respectivo.
      * @param usuario
      * @param contrasenna
      * @return
@@ -45,7 +53,7 @@ public class GESTOR {
     }
 
     /**
-     * Funcion que recibe el objeto de persona para mandarlo a la base de datos
+     * Funcion que recibe el objeto de persona para mandarlo a la base de datos.
      * @param persona
      */
     public void registroUsuario(Persona persona) {
