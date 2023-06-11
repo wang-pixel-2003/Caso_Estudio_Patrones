@@ -2,6 +2,7 @@ package Frontend.tl;
 import Backend.Controller.GESTOR;
 import Backend.Model.Libro.Libro;
 import Backend.Model.Persona.Persona;
+import Backend.Model.Prestamo.Prestamo;
 import Frontend.ui.UI;
 
 import java.io.IOException;
@@ -146,8 +147,12 @@ public class Controller {
                 }
                 break;
             case 4:
-                interfaz.imprimirMensaje("Mostar lista de libros prestados");
+                interfaz.imprimirMensaje("==lista de libros prestados==");
+                for (Prestamo prestamo:gestor.mostrarLibrosPrestados()) {
+                    interfaz.imprimirMensaje(prestamo.toString());
+                }
                 break;
+
             case 5:
                 interfaz.imprimirMensaje("==lista de libros disponibles==");
                 for (Libro libro:gestor.mostrarLibrosDisponibles()) {
@@ -180,6 +185,13 @@ public class Controller {
                     interfaz.imprimirMensaje(libro.toString());
                 }
                 break;
+            case 5:
+                interfaz.imprimirMensaje("==lista de libros prestados==");
+                for (Prestamo prestamo:gestor.mostrarLibrosPrestados()) {
+                    interfaz.imprimirMensaje(prestamo.toString());
+                }
+                break;
+
             case 0:
                 break;
             default:

@@ -47,6 +47,9 @@ public class Libro {
 
 
     }
+    public Libro(String titulo){
+        this.titulo = titulo;
+    }
 
     public void setIdLibro(int idLibro) {
         this.idLibro = idLibro;

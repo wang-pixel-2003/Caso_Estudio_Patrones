@@ -1,17 +1,16 @@
 package Backend.Model.Prestamo;
 
 import Backend.Model.Libro.Libro;
+import Backend.Model.Persona.Persona;
 
 import java.util.ArrayList;
 
 public class Prestamo {
 
     private int id_Prestamo;
-    private int id_Usuario;
-    private int id_Libro;
+    private Persona nombreUsuario;
+    private Libro Libro;
     private String Fecha_Devolucion;
-
-    public ArrayList<Libro> lista = new ArrayList<Libro>();
 
     public int getId_Prestamo() {
         return id_Prestamo;
@@ -21,20 +20,20 @@ public class Prestamo {
         this.id_Prestamo = id_Prestamo;
     }
 
-    public int getId_Usuario() {
-        return id_Usuario;
+    public Persona getNombreUsuario() {
+        return nombreUsuario;
     }
 
-    public void setId_Usuario(int id_Usuario) {
-        this.id_Usuario = id_Usuario;
+    public void setNombreUsuario(Persona nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
 
-    public int getId_Libro() {
-        return id_Libro;
+    public Backend.Model.Libro.Libro getLibro() {
+        return Libro;
     }
 
-    public void setId_Libro(int id_Libro) {
-        this.id_Libro = id_Libro;
+    public void setLibro(Backend.Model.Libro.Libro libro) {
+        Libro = libro;
     }
 
     public String getFecha_Devolucion() {
@@ -48,10 +47,11 @@ public class Prestamo {
     public Prestamo() {
     }
 
-    public Prestamo(int id_Prestamo, int id_Usuario, int id_Libro, String fecha_Devolucion) {
+
+    public Prestamo(int id_Prestamo, Persona nombreUsuario, Backend.Model.Libro.Libro libro, String fecha_Devolucion) {
         this.id_Prestamo = id_Prestamo;
-        this.id_Usuario = id_Usuario;
-        this.id_Libro = id_Libro;
+        this.nombreUsuario = nombreUsuario;
+        Libro = libro;
         Fecha_Devolucion = fecha_Devolucion;
     }
 
@@ -72,6 +72,11 @@ public class Prestamo {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Prestamo{" +
+                "id_Prestamo=" + id_Prestamo +
+                ", nombreUsuario=" + nombreUsuario.getNombre() +
+                ", Libro=" + Libro.getTitulo() +
+                ", Fecha_Devolucion='" + Fecha_Devolucion + '\'' +
+                '}';
     }
 }
