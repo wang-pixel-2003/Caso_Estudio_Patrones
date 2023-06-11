@@ -40,14 +40,14 @@ public class Controller {
         interfaz.imprimirMensaje("Estado 0 = Disponible");
         interfaz.imprimirMensaje("Estado 1 = Ocupado");
         int estado = Integer.parseInt(interfaz.leerTexto());
-        gestor.modificarEstado(estado, titulo);
-        if(estado==0){
-            interfaz.imprimirMensaje("Ahora el estado del libro " + titulo + " esta Disponible\n");
+        if (estado == 0){
+            gestor.modificarDisponible(titulo);
         }
-        if(estado==1){
-            interfaz.imprimirMensaje("Ahora el estado del libro " + titulo + " esta Ocupado\n");
+        if (estado == 1){
+            gestor.modificarApartado(titulo);
         }
     }
+
 
     /**
      * Funcion que permite elegir la opcion del primer menu
@@ -174,10 +174,25 @@ public class Controller {
                 interfaz.imprimirMensaje("Me registro como usuario");
                 break;
             case 2:
-                interfaz.imprimirMensaje("solicito libro");
+                interfaz.imprimirMensaje("==lista de libros==");
+                for (Libro libro:gestor.listarTotalLibros()) {
+                    interfaz.imprimirMensaje(libro.toString());
+                }
+                interfaz.imprimirMensaje("Digite el nombre del libro");
+                String tituloLibro = interfaz.leerTexto();
+                gestor.modificarApartado(tituloLibro);
+                gestor.agregarPrestamo(gestor.getUsuarioLogin(), tituloLibro);
+                interfaz.imprimirMensaje("El libro solicitado fue: " + tituloLibro);
                 break;
             case 3:
-                interfaz.imprimirMensaje("devolver libro");
+                for (Libro libro:gestor.listarTotalLibros()) {
+                    interfaz.imprimirMensaje(libro.toString());
+                }
+                interfaz.imprimirMensaje("Digite el nombre del libro");
+                String libroTitulo = interfaz.leerTexto();
+                gestor.modificarDisponible(libroTitulo);
+                gestor.devolverPrestamo(gestor.getUsuarioLogin(), libroTitulo);
+                interfaz.imprimirMensaje("El libro fue devuelto: " + libroTitulo);
                 break;
             case 4:
                 interfaz.imprimirMensaje("==lista de libros disponibles==");
