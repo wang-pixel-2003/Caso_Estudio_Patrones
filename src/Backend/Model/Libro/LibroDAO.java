@@ -90,43 +90,6 @@ public class LibroDAO {
         return list;
     }
 
-    /**
-     * Esta funcion actualiza la informacion de libro en la tabla de libros, agarra el estado, titulo.
-     * @param estado
-     * @param titulo
-     */
-    public void modificarEstado(int estado, String titulo){
-        ConexionBD con = new ConexionBD();
-        String sql = "";
-        sql = "UPDATE Libros Set estado=? WHERE titulo=?";
-
-        PreparedStatement ps = null;
-        try {
-            ps = con.getConnection().prepareStatement(sql);
-            if (estado == 0){
-                ps.setInt(1, 0);
-                ps.setString(2,titulo);
-                ps.executeUpdate();
-            }
-            if (estado == 1){
-                ps.setInt(1, 1);
-                ps.setString(2,titulo);
-                ps.executeUpdate();
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(LibroDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception ex) {
-            Logger.getLogger(LibroDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                ps.close();
-                con.desconectarBD();
-            } catch (Exception ex) {
-                con.desconectarBD();
-            }
-        }
-    }
-
     public ArrayList<Libro> mostrarListaLibrosDisponibles() {
         ArrayList<Libro> list = new ArrayList<Libro>();
         ConexionBD con = new ConexionBD();
@@ -170,7 +133,143 @@ public class LibroDAO {
         return list;
     }
 
+    /**
+     * Esta funcion actualiza la informacion de los libros en la tabla de libros, agarra el estado, titulo.
+     * @param titulo
+     */
+    public void modificarDisponible(String titulo){
+        ConexionBD con = new ConexionBD();
+        String sql = "";
+        sql = "UPDATE Libros Set estado=? WHERE titulo=?";
 
+        PreparedStatement ps = null;
+        try {
+            ps = con.getConnection().prepareStatement(sql);
+            ps.setInt(1, 0);
+            ps.setString(2,titulo);
+            ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(LibroDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(LibroDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                ps.close();
+                con.desconectarBD();
+            } catch (Exception ex) {
+                con.desconectarBD();
+            }
+        }
+    }
+
+    /**
+     * Esta funcion lo que hace es modificar el
+     * @param titulo
+     */
+    public void modificarApartado(String titulo){
+        ConexionBD con = new ConexionBD();
+        String sql = "";
+        sql = "UPDATE Libros Set estado=? WHERE titulo=?";
+
+        PreparedStatement ps = null;
+        try {
+            ps = con.getConnection().prepareStatement(sql);
+            ps.setInt(1, 1);
+            ps.setString(2,titulo);
+            ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(LibroDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(LibroDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                ps.close();
+                con.desconectarBD();
+            } catch (Exception ex) {
+                con.desconectarBD();
+            }
+        }
+    }
+    public void agregarPrestamoLibros(Persona usuario, String libro){
+        ConexionBD con = new ConexionBD();
+        String sql = "";
+        sql = "SELECT * FROM libros WHERE titulo = ?";
+        String sql2 = "";
+        sql2 = "INSERT INTO prestamos_libros (id_prestamo, id_usuario, id_libro, fecha_devolucion) VALUES (nextval('SEC_PRESTAMOS_LIBROS'),?,?,CURRENT_DATE)";
+//        String sql3 = "";
+//        sql3 = "UPDATE  SET estado=? WHERE titulo=?";
+        PreparedStatement ps = null;
+        PreparedStatement ps2 = null;
+        ResultSet rs = null;
+        Libro libro1 = new Libro();
+        try {
+            ps = con.getConnection().prepareStatement(sql);
+            ps.setString(1, libro);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                libro1.setIdLibro(rs.getInt("id_libro"));
+            }
+            ps2 = con.getConnection().prepareStatement(sql2);
+            ps2.setInt(1, usuario.getId());
+            ps2.setInt(2, libro1.getIdLibro());
+            ps2.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(LibroDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(LibroDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                ps.close();
+                ps2.close();
+                rs.close();
+                con.desconectarBD();
+            } catch (Exception ex) {
+                con.desconectarBD();
+            }
+        }
+    }
+    public void devolverPrestamoLibros(Persona usuario, String libro){
+        ConexionBD con = new ConexionBD();
+        String sql = "";
+        sql = "SELECT * FROM libros WHERE titulo = ?";
+        String sql2 = "";
+        sql2 = "DELETE FROM prestamos_libros WHERE id_usuario=? AND id_libro=?";
+//        String sql3 = "";
+//        sql3 = "UPDATE  SET estado=? WHERE titulo=?";
+        PreparedStatement ps = null;
+        PreparedStatement ps2 = null;
+        ResultSet rs = null;
+        Libro libro1 = new Libro();
+        try {
+            ps = con.getConnection().prepareStatement(sql);
+            ps.setString(1, libro);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                libro1.setIdLibro(rs.getInt("id_libro"));
+            }
+            ps2 = con.getConnection().prepareStatement(sql2);
+            ps2.setInt(1, usuario.getId());
+            ps2.setInt(2, libro1.getIdLibro());
+            ps2.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(LibroDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(LibroDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                ps.close();
+                ps2.close();
+                rs.close();
+                con.desconectarBD();
+            } catch (Exception ex) {
+                con.desconectarBD();
+            }
+        }
+    }
 
 
 }

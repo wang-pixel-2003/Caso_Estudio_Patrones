@@ -8,6 +8,7 @@ import Backend.Model.Prestamo.Prestamo;
 import Backend.Model.Prestamo.PrestamoDAO;
 
 
+import java.net.PortUnreachableException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,11 +40,20 @@ public class GESTOR {
 
     /**
      * Esta funcion modifica el estado y envia la informacion a actualizar.
-     * @param estado
      * @param titulo
      */
-    public void modificarEstado(int estado, String titulo){
-        librosDao.modificarEstado(estado, titulo);
+    public void modificarDisponible(String titulo){
+        librosDao.modificarDisponible(titulo);
+    }
+    public void modificarApartado(String titulo){
+        librosDao.modificarApartado(titulo);
+    }
+    public void agregarPrestamo(Persona usuarioLogin, String libro){
+        librosDao.agregarPrestamoLibros(usuarioLogin, libro);
+    }
+
+    public void devolverPrestamo(Persona usuarioLogin, String libro){
+        librosDao.devolverPrestamoLibros(usuarioLogin, libro);
     }
     /**
      * Esta funcion verifica el tipo de usuario para rediccionar al menu respectivo.
