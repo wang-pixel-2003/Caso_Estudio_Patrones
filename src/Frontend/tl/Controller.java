@@ -176,9 +176,6 @@ public class Controller {
     public void procesarOpcionCliente(int opcion) throws Exception {
         switch (opcion) {
             case 1:
-                interfaz.imprimirMensaje("Me registro como usuario");
-                break;
-            case 2:
                 interfaz.imprimirMensaje("==lista de libros==");
                 for (Libro libro:gestor.listarTotalLibros()) {
                     interfaz.imprimirMensaje(libro.toString());
@@ -189,7 +186,7 @@ public class Controller {
                 gestor.agregarPrestamo(gestor.getUsuarioLogin(), tituloLibro);
                 interfaz.imprimirMensaje("El libro solicitado fue: " + tituloLibro);
                 break;
-            case 3:
+            case 2:
                 for (Libro libro:gestor.listarTotalLibros()) {
                     interfaz.imprimirMensaje(libro.toString());
                 }
@@ -199,13 +196,13 @@ public class Controller {
                 gestor.devolverPrestamo(gestor.getUsuarioLogin(), libroTitulo);
                 interfaz.imprimirMensaje("El libro fue devuelto: " + libroTitulo);
                 break;
-            case 4:
+            case 3:
                 interfaz.imprimirMensaje("==lista de libros disponibles==");
                 for (Libro libro:gestor.mostrarLibrosDisponibles()) {
                     interfaz.imprimirMensaje(libro.toString());
                 }
                 break;
-            case 5:
+            case 4:
                 interfaz.imprimirMensaje("==lista de libros prestados==");
                 for (Prestamo prestamo:gestor.mostrarLibrosPrestados()) {
                     interfaz.imprimirMensaje(prestamo.toString());

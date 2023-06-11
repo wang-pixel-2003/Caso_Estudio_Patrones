@@ -1,8 +1,7 @@
 <component name="libraryTable">
   <library name="jdbc-postgresql">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../../../librerias jar/jdbc-postgresql.jar!/" />
-      <root url="jar://$USER_HOME$/Downloads/librerias jar/librerias jar/jdbc-postgresql.jar!/" />
+      <root url="jar://$USER_HOME$/librerias jar/jdbc-postgresql.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

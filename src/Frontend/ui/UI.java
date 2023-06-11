@@ -35,11 +35,10 @@ public class UI {
         System.out.println("============= Biblioteca El Caso =====================");
         System.out.println("=============   Menu del Cliente  ====================");
         System.out.println("=======================================================");
-        System.out.println("1. Registrarse como usuario");
-        System.out.println("2. Solicitar libro");
-        System.out.println("3. Devolver libro prestado");
-        System.out.println("4. Mostrar libros disponibles");
-        System.out.println("5. Mostrar libros prestados");
+        System.out.println("1. Solicitar libro");
+        System.out.println("2. Devolver libro prestado");
+        System.out.println("3. Mostrar libros disponibles");
+        System.out.println("4. Mostrar libros prestados");
         System.out.println("0. Salir");
         System.out.print("Seleccione la opción que desea: ");
     }
