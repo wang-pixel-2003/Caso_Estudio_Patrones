@@ -106,7 +106,13 @@ public class GESTOR {
 
     public  ArrayList<Libro>listarTotalLibros(){
         return librosDao.mostrarListaLibros();
-
     }
-
+    /**
+     * Funcion que contiene la lista de libros que pertenecen al usuario despues de la consulta al DAO de libros
+     * @param usuario
+     * @return
+     */
+    public ArrayList<Libro> listarLibrosxUsuario(String usuario){
+        return librosDao.librosUsuario(usuario);
+    }
 }
