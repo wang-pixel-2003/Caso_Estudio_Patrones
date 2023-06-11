@@ -160,7 +160,12 @@ public class Controller {
                 }
                 break;
             case 6:
-                interfaz.imprimirMensaje("Buscar libro por usuario");
+                interfaz.imprimirMensaje("Ingrese el nombre del usuario");
+                String usuario = interfaz.leerTexto();
+                interfaz.imprimirMensaje("\n==lista de libros del usuario " + usuario + "==");
+                for (Libro libro:gestor.listarLibrosxUsuario(usuario)) {
+                    interfaz.imprimirMensaje(libro.toString());
+                }
                 break;
             case 0:
                 break;
